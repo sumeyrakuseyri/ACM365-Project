@@ -1,0 +1,208 @@
+{
+  "tarih": [
+    {
+      "text": "Magna Carta hangi yıl imzalanmıştır?",
+      "choices": ["1066", "1215", "1453", "1492"],
+      "answerIndex": 1,
+      "img": "images/tarih-1.png"
+    },
+    {
+      "text": "Reform Hareketi ilk olarak hangi ülkede başlamıştır?",
+      "choices": ["Fransa", "İngiltere", "Almanya", "İtalya"],
+      "answerIndex": 2,
+      "img": "images/tarih-2.png"
+    },
+    {
+      "text": "Fransız İhtilali'nin en önemli sonuçlarından biri hangisidir?",
+      "choices": [
+        "Mutlak monarşinin güçlenmesi",
+        "Milliyetçilik düşüncesinin yayılması",
+        "Feodalitenin güçlenmesi",
+        "Sömürgeciliğin sona ermesi"
+      ],
+      "answerIndex": 1,
+      "img": "images/tarih-3.png"
+    },
+    {
+      "text": "İstanbul'un fethi hangi yıl gerçekleşmiştir?",
+      "choices": ["1299", "1402", "1453", "1517"],
+      "answerIndex": 2,
+      "img": "images/tarih-4.png"
+    },
+    {
+      "text": "Rasputin hangi ülke tarihinin önemli figürlerinden biridir?",
+      "choices": ["Almanya", "Rusya", "Fransa", "Avusturya"],
+      "answerIndex": 1,
+      "img": "images/Rasputin.png"
+    },
+    {
+      "text": "Rönesans hareketi ilk olarak hangi ülkede başlamıştır?",
+      "choices": ["İtalya", "İngiltere", "İspanya", "Rusya"],
+      "answerIndex": 0,
+      "img": "images/tarih-5.png"
+    },
+    {
+      "text": "Kavimler Göçü'nün sonucunda hangisi ortaya çıkmıştır?",
+      "choices": [
+        "Roma İmparatorluğu'nun yıkılması",
+        "Feodalitenin ortaya çıkması",
+        "Coğrafi keşifler",
+        "Reform hareketleri"
+      ],
+      "answerIndex": 1,
+      "img": "images/tarih-6.png"
+    },
+    {
+      "text": "Tarihte \"Hasta Adam\" olarak adlandırılan devlet hangisidir?",
+      "choices": ["Osmanlı Devleti", "Avusturya", "Rusya", "İran"],
+      "answerIndex": 0,
+      "img": "images/tarih-7.png"
+    },
+    {
+      "text": "Berlin Duvarı hangi yıl yıkılmıştır?",
+      "choices": ["1961", "1975", "1989", "1991"],
+      "answerIndex": 2,
+      "img": "images/tarih-8.png"
+    },
+    {
+      "text": "Fransız İhtilali sonrası yayılan fikir akımı hangisidir?",
+      "choices": ["Skolastik düşünce", "Milliyetçilik", "Derebeylik", "Teokrasi"],
+      "answerIndex": 1,
+      "img": "images/tarih-3.png"
+    }
+  ],
+
+  "magazin": [
+    {
+      "text": "Seda Sayan'ın Mona Lisa tablosu şeklinde portresini evine astıran eski sevgilisi kimdir?",
+      "choices": ["Nihat Doğan", "Mahsun Kırmızıgül", "Sinan Engin", "İbrahim Tatlıses"],
+      "answerIndex": 0,
+      "img": "images/magazin-1.png"
+    },
+    {
+      "text": "Gökhan Özen jet ski ile kaybolduğunda gazetecilere ne söyledi?",
+      "choices": [
+        "Denizde mahsur kaldım",
+        "Jet ski arızalandı",
+        "Köpekbalıklarıyla boğuştum",
+        "Yönümü kaybettim"
+      ],
+      "answerIndex": 2,
+      "img": "images/magazin-2.png"
+    },
+    {
+      "text": "Paris Hilton'un çantacısıyken ünlenen kişi kimdir?",
+      "choices": ["Kim Kardashian", "Kylie Jenner", "Amber Rose", "Blac Chyna"],
+      "answerIndex": 0,
+      "img": "images/magazin-3.png"
+    },
+    {
+      "text": "Johnny Depp'i Elon Musk ile aldattığı iddia edilen ünlü kimdir?",
+      "choices": ["Amber Heard", "Scarlett Johansson", "Megan Fox", "Cara Delevingne"],
+      "answerIndex": 0,
+      "img": "images/magazin-4.png"
+    },
+    {
+      "text": "En çok Emmy ödülü kazanan sanatçı kimdir?",
+      "choices": ["Oprah Winfrey", "Julia Louis-Dreyfus", "Ellen DeGeneres", "Meryl Streep"],
+      "answerIndex": 1,
+      "img": "images/magazin-5.png"
+    },
+    {
+      "text": "İlk Emmy ödülü kazanan Türk oyuncu kimdir?",
+      "choices": ["Haluk Bilginer", "Kıvanç Tatlıtuğ", "Kenan İmirzalıoğlu", "Engin Akyürek"],
+      "answerIndex": 0,
+      "img": "images/magazin-5.png"
+    },
+    {
+      "text": "Uluslararası alanda ödül kazanan Türk filmi hangisidir?",
+      "choices": [
+        "Kış Uykusu",
+        "Recep İvedik",
+        "GORA",
+        "Hababam Sınıfı"
+      ],
+      "answerIndex": 0,
+      "img": "images/magazin-6.png"
+    },
+
+{
+  "text": "Tarkan’ın “Hüp” klibinden sonra “Keşke Tarkan beni de hüpletse” diyen ünlü kimdir?",
+  "choices": [
+    "Ajda Pekkan",
+    "Gülben Ergen",
+    "Demet Akalın",
+    "Hadise"
+  ],
+  "answerIndex": 1,
+  "img": "images/magazin-7.png"
+}
+
+
+  ],
+
+  "genelkultur": [
+    {
+      "text": "Dünya yaklaşık kaç ton ağırlığındadır?",
+      "choices": [
+        "6 x 10^21 ton",
+        "6 x 10^24 ton",
+        "6 x 10^18 ton",
+        "6 x 10^30 ton"
+      ],
+      "answerIndex": 1,
+      "img": "images/gk-1.png"
+    },
+    {
+      "text": "Karasinekler hangi notada vızıldar?",
+      "choices": ["Do", "Fa", "Sol", "La"],
+      "answerIndex": 1,
+      "img": "images/gk-2.png"
+    },
+    {
+      "text": "Friends dizisinde karakterlerin sık sık gittiği kafenin adı nedir?",
+      "choices": ["Central Perk", "Coffee Time", "Friends Cafe", "NY Coffee"],
+      "answerIndex": 0,
+      "img": "images/gk-3.png"
+    },
+    {
+      "text": "Yapay zeka nedir?",
+      "choices": [
+        "İnsan zekasının makineler tarafından taklit edilmesi",
+        "Sadece robot teknolojisi",
+        "İnsan beyniyle çalışan yazılım",
+        "Sanal gerçeklik uygulaması"
+      ],
+      "answerIndex": 0,
+      "img": "images/gk-4.png"
+    },
+    {
+      "text": "İnsan vücudunda en fazla bulunan element hangisidir?",
+      "choices": ["Karbon", "Oksijen", "Hidrojen", "Azot"],
+      "answerIndex": 1,
+      "img": "images/gk-5.png"
+    },
+    {
+      "text": "Placebo etkisi nedir?",
+      "choices": [
+        "Gerçek tedavi etkisi",
+        "İlaç yan etkisi",
+        "Tedavi olmadan iyileşme algısı",
+        "Psikolojik hastalık"
+      ],
+      "answerIndex": 2,
+      "img": "images/gk-6.png"
+    },
+    {
+      "text": "\"Situationship\" kelimesi ne anlama gelir?",
+      "choices": [
+        "Resmi evlilik",
+        "Tamamen arkadaşlık",
+        "Belirsiz ilişki durumu",
+        "Gizli nişan"
+      ],
+      "answerIndex": 2,
+      "img": "images/Situationship.png"
+    }
+  ]
+}

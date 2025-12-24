@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bilgi Yarışması</title>
+  <style>
+    :root{
+      --pink:#81053b;
+      --blue:#1262b3;
+      --bg:#f7f7fb;
+      --text:#222;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(255,79,154,.20), transparent 60%),
+                  radial-gradient(1200px 600px at 90% 10%, rgba(77,166,255,.22), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+    }
+
+    .app{
+      width:min(980px, 100%);
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.6);
+      border-radius: calc(var(--radius) + 8px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .topbar{
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      background: linear-gradient(90deg, rgba(255,79,154,.18), rgba(77,166,255,.18));
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .brand h1{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .brand p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .pill{
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.7);
+      border: 1px solid rgba(0,0,0,.06);
+      font-size:13px;
+      color:#111;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      white-space:nowrap;
+    }
+
+    .content{
+      padding:22px;
+      display:grid;
+      gap:18px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:18px;
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(0,0,0,.06);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      padding:18px;
+    }
+
+    .title{
+      margin:0 0 6px 0;
+      font-size:22px;
+      line-height:1.2;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .input{
+      width:100%;
+      padding:12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.10);
+      outline:none;
+      font-size:14px;
+      background:#fff;
+    }
+    .input:focus{
+      border-color: rgba(77,166,255,.8);
+      box-shadow: 0 0 0 4px rgba(77,166,255,.16);
+    }
+
+    .btn{
+      border:none;
+      cursor:pointer;
+      padding:12px 14px;
+      border-radius: 14px;
+      font-weight:700;
+      letter-spacing:.2px;
+      transition: transform .08s ease, opacity .15s ease, box-shadow .15s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      user-select:none;
+    }
+    .btn:active{ transform: scale(.99); }
+    .btn:disabled{
+      cursor:not-allowed;
+      opacity:.6;
+    }
+
+    .btn-primary{
+      background: linear-gradient(90deg, var(--pink), var(--blue));
+      color:white;
+      box-shadow: 0 10px 18px rgba(255,79,154,.20);
+    }
+    .btn-ghost{
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(0,0,0,.10);
+      color:#111;
+    }
+
+    .catBtns{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .cat{
+      background: rgba(77,166,255,.10);
+      border: 1px solid rgba(77,166,255,.22);
+      color:#111;
+    }
+    .cat:hover{
+      box-shadow: 0 10px 18px rgba(77,166,255,.14);
+    }
+
+    .cat .tag{
+      font-size:12px;
+      font-weight:800;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(0,0,0,.08);
+    }
+
+    .quizHeader{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .qMeta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .timer{
+      min-width:140px;
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(77,166,255,.10);
+      border: 1px solid rgba(77,166,255,.22);
+      color:#111;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+    }
+    .bar{
+      height:8px;
+      width:160px;
+      border-radius:999px;
+      background: rgba(0,0,0,.08);
+      overflow:hidden;
+    }
+    .bar > div{
+      height:100%;
+      width:100%;
+      background: linear-gradient(90deg, var(--blue), var(--pink));
+      transform-origin:left;
+      transform: scaleX(1);
+      transition: transform .2s linear;
+    }
+
+    .qText{
+      margin:12px 0 0 0;
+      font-size:20px;
+      line-height:1.35;
+    }
+
+    .media{
+      margin-top:12px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,.08);
+      overflow:hidden;
+      background:#fff;
+    }
+    .media img{
+      display:block;
+      width:100%;
+      height:240px;
+      object-fit:cover;
+    }
+    .media.hidden{ display:none; }
+
+    .choices{
+      margin-top:14px;
+      display:grid;
+      gap:10px;
+    }
+    .choice{
+      text-align:left;
+      width:100%;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 16px;
+      padding:12px 14px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      font-size:14px;
+      cursor:pointer;
+      transition: box-shadow .15s ease, transform .08s ease, border-color .15s ease;
+    }
+    .choice:hover{
+      border-color: rgba(77,166,255,.55);
+      box-shadow: 0 10px 18px rgba(77,166,255,.14);
+    }
+    .choice:active{ transform: scale(.995); }
+
+    .choice .letter{
+      width:28px; height:28px;
+      border-radius: 10px;
+      background: rgba(255,79,154,.12);
+      border: 1px solid rgba(255,79,154,.25);
+      color:#111;
+      font-weight:900;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+      margin-top:1px;
+    }
+
+    .choice.correct{
+      border-color: rgba(34,197,94,.65);
+      box-shadow: 0 10px 18px rgba(34,197,94,.14);
+    }
+    .choice.wrong{
+      border-color: rgba(239,68,68,.65);
+      box-shadow: 0 10px 18px rgba(239,68,68,.14);
+    }
+
+    .footerRow{
+      margin-top:16px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .small{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .hidden{ display:none !important; }
+
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:12px;
+    }
+    @media (max-width:520px){
+      .stats{ grid-template-columns: 1fr; }
+      .timer .bar{ width:120px; }
+    }
+
+    .stat{
+      border-radius: 16px;
+      border:1px solid rgba(0,0,0,.08);
+      padding:14px;
+      background:#fff;
+    }
+    .stat h3{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+      font-weight:800;
+    }
+    .stat p{
+      margin:6px 0 0 0;
+      font-size:28px;
+      font-weight:1000;
+    }
+    .stat.good p{ color: rgb(22,163,74); }
+    .stat.bad p{ color: rgb(220,38,38); }
+    .stat.neutral p{ color: #555; }
+
+    .note{
+      padding:12px 14px;
+      border-radius: 16px;
+      background: rgba(255,79,154,.08);
+      border: 1px solid rgba(255,79,154,.18);
+      color:#111;
+      font-size:13px;
+      line-height:1.35;
+      margin-top:12px;
+    }
+
+    .linkLike{
+      color: var(--blue);
+      font-weight:800;
+      cursor:pointer;
+      text-decoration:underline;
+      user-select:none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <div class="topbar">
+      <div class="brand">
+        <h1>Bilgi Yarışması</h1>
+        <p>3 kategori • her soru 30 saniye • geri dönüş yok</p>
+      </div>
+      <div class="pill" id="pill">
+        <span id="pillCat">Kategori: -</span>
+        <span>•</span>
+        <span id="pillQ">Soru: -</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- HOME -->
+<div id="screenHome" class="grid">
+  <div class="card">
+    <h2 class="title">Başlayalım</h2>
+    <p class="subtitle">
+      İsmini yaz, sonra kategori seç. Seçince o kategoriden <b>rastgele 5 soru</b> gelecek.
+    </p>
+
+    <div style="margin-top:14px;">
+      <label class="small">Oyuncu Adı</label>
+      <input id="playerName" class="input" placeholder="örn: Sümeyra" />
+    </div>
+
+    <div class="note">
+      <b>Kural:</b> Bir soruyu geçtikten sonra geri dönemezsin. Süre biterse otomatik sonraki soruya geçer.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="title">Kategori Seç</h2>
+    <p class="subtitle">Tıkla ve oyun başlasın.</p>
+
+    <div class="catBtns">
+      <button class="btn cat" id="btnTarih">
+        <span class="tag">📜</span>
+        <span style="font-weight:900;">Tarih</span>
+        <span style="margin-left:auto; color:var(--muted); font-weight:800;">Rastgele 5</span>
+      </button>
+
+      <button class="btn cat" id="btnMagazin">
+        <span class="tag">🎤</span>
+        <span style="font-weight:900;">Magazin</span>
+        <span style="margin-left:auto; color:var(--muted); font-weight:800;">Rastgele 5</span>
+      </button>
+
+      <button class="btn cat" id="btnGK">
+        <span class="tag">🧠</span>
+        <span style="font-weight:900;">Genel Kültür</span>
+        <span style="margin-left:auto; color:var(--muted); font-weight:800;">Rastgele 5</span>
+      </button>
+    </div>
+
+    <div class="note">
+      <b>Data entegre:</b> Sorular <code>questions.json</code> dosyasından okunuyor.
+    </div>
+  </div>
+
+  <!-- ✅ Skor tablosu ayrı bir card olmalı -->
+  <div class="card">
+    <h2 class="title">Skor Tablosu</h2>
+    <p class="subtitle">localStorage (kalıcı)</p>
+
+    <div id="leaderboard" class="note" style="margin-top:12px;">
+      Henüz skor yok.
+    </div>
+
+    <div class="footerRow" style="margin-top:12px;">
+      <button class="btn btn-ghost" id="btnClearScores">
+        Skorları Sıfırla
+      </button>
+    </div>
+  </div>
+</div>
+
+
+          </div>
+
+          <div class="note hidden">
+            <b>Data entegre:</b> Sorular <code>questions.json</code> dosyasından okunuyor.
+          </div>
+        </div>
+      </div>
+
+      <!-- QUIZ -->
+      <div id="screenQuiz" class="grid hidden">
+        <div class="card">
+          <div class="quizHeader">
+            <div>
+              <div class="qMeta">
+                <span id="who"></span>
+                <span>•</span>
+                <span id="metaCat"></span>
+              </div>
+              <p id="qText" class="qText">Soru gelecek…</p>
+            </div>
+
+            <div class="timer">
+              <span id="timeText">30s</span>
+              <div class="bar"><div id="barFill"></div></div>
+            </div>
+          </div>
+
+          <div id="mediaBox" class="media hidden">
+            <img id="qImg" alt="Soru görseli" />
+          </div>
+
+          <div id="choices" class="choices"></div>
+          <div id="feedback" class="note hidden"></div>
+
+
+          <div class="footerRow">
+            <div class="small" id="tip">
+              Şık seçince kilitlenir. Süre bitince “boş” sayılır ve geçer.
+            </div>
+            <button class="btn btn-ghost" id="btnQuit">Çık</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="title">Durum</h2>
+          <p class="subtitle">Bu turda 5 soru var.</p>
+
+          <div class="stats">
+            <div class="stat good">
+              <h3>Doğru</h3>
+              <p id="sCorrect">0</p>
+            </div>
+            <div class="stat bad">
+              <h3>Yanlış</h3>
+              <p id="sWrong">0</p>
+            </div>
+            <div class="stat neutral">
+              <h3>Boş</h3>
+              <p id="sBlank">0</p>
+            </div>
+          </div>
+
+          <div class="note">
+            <b>İpucu:</b> “boş” demek süre bitti veya hiç işaretlemedin demek.
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div id="screenResult" class="grid hidden">
+        <div class="card">
+          <h2 class="title">Oyun Bitti 🎉</h2>
+          <p class="subtitle" id="resultLine">Sonuçlar hesaplanıyor…</p>
+
+          <div class="stats">
+            <div class="stat good">
+              <h3>Doğru</h3>
+              <p id="rCorrect">0</p>
+            </div>
+            <div class="stat bad">
+              <h3>Yanlış</h3>
+              <p id="rWrong">0</p>
+            </div>
+            <div class="stat neutral">
+              <h3>Boş</h3>
+              <p id="rBlank">0</p>
+            </div>
+          </div>
+
+          <div class="footerRow">
+            <button class="btn btn-primary" id="btnRestart">Yeniden Oyna</button>
+            <span class="linkLike" id="btnShowDebug">Console’da Data’yı gör</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="title">Detay</h2>
+          <p class="subtitle">Her soruda: Doğru / Yanlış / Boş kaydı tutuldu.</p>
+
+          <div class="note" id="detailBox">
+            Detaylar burada görünecek…
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<script src="app.js"></script>
+</body>
+</html>
+
+
