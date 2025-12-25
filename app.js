@@ -136,7 +136,7 @@ function goNext(){
        const correctCount = results.filter(x=>x==="correct").length;
        const player = (playerName.value.trim() )
 
-saveScore(player, categoryLabel, correctCount, questions, results);
+//saveScore(player, categoryLabel, correctCount, questions, results);
 loadScores();
 
 		return;
@@ -262,32 +262,51 @@ function showResults(){
 
   const player = playerName.value.trim() || "Sümeyra";
 
-  // 🔴 KAYIT BURADA
+  // 🔴 SKORU KAYDET
   saveScore(player, categoryLabel, correctCount);
   loadScores();
 
+  // ÜSTTEKİ SAYILAR
   rCorrect.textContent = correctCount;
   rWrong.textContent   = wrongCount;
   rBlank.textContent   = blankCount;
 
   resultLine.textContent =
     `${player} — ${categoryLabel} kategorisinde: ${correctCount} doğru, ${wrongCount} yanlış, ${blankCount} boş.`;
+
+  // 🔽🔽🔽 DETAY: HANGİ SORU DOĞRU / YANLIŞ / BOŞ 🔽🔽🔽
+  let html = "";
+
+  questions.forEach((q, i) => {
+    const status = results[i] || "blank";
+
+    const label =
+      status === "correct" ? "✅ Doğru" :
+      status === "wrong"   ? "❌ Yanlış" :
+                             "⚪ Boş";
+
+    const correctAnswer = q.choices[q.answerIndex];
+
+    html += `
+      <div style="margin-bottom:12px;">
+        <div style="font-weight:900;">${i + 1}) ${escapeHtml(q.text)}</div>
+        <div style="color:var(--muted); margin-top:2px;">${label}</div>
+        ${
+          status !== "correct"
+            ? `<div style="font-size:13px; color:#555;">
+                 Doğru cevap: <b>${escapeHtml(correctAnswer)}</b>
+               </div>`
+            : ""
+        }
+      </div>
+    `;
+  });
+
+  detailBox.innerHTML = html || "Detay yok.";
+
+  updatePill();
 }
 
-
-	// detail listing
-	let html = "";
-	questions.forEach((q, i) => {
-		const status = results[i] || "blank";
-		const label = status === "correct" ? "✅ Doğru" : (status === "wrong" ? "❌ Yanlış" : "⚪ Boş");
-		html += `<div style="margin-bottom:10px;">
-			<div style="font-weight:900;">${i+1}) ${escapeHtml(q.text)}</div>
-			<div style="color:var(--muted); margin-top:2px;">${label}</div>
-		</div>`;
-	});
-	detailBox.innerHTML = html || "Detay yok.";
-
-	updatePill();
 
 
 // ---------------------------
